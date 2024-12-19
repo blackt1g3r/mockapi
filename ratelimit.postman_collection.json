@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "b0c62544-f994-46b0-8a70-9145e29cb87d",
+		"name": "C06",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1748273"
+	},
+	"item": [
+		{
+			"name": "mockapi100 mock-app-w-plan-1min",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IBM-Client-Id",
+						"value": "9723f463432bdac8489ccf0d370adb46",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://small-gw-gateway-integration.apps.6736c9092d681465a42b82bd.ocp.techzone.ibm.com/provider-org/sandbox/mockapi100/",
+					"protocol": "https",
+					"host": [
+						"small-gw-gateway-integration",
+						"apps",
+						"6736c9092d681465a42b82bd",
+						"ocp",
+						"techzone",
+						"ibm",
+						"com"
+					],
+					"path": [
+						"provider-org",
+						"sandbox",
+						"mockapi100",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mock 1min",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IBM-Client-Id",
+						"value": "9723f463432bdac8489ccf0d370adb46",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://small-gw-gateway-integration.apps.6736c9092d681465a42b82bd.ocp.techzone.ibm.com/provider-org/sandbox/mockapi100/",
+					"protocol": "https",
+					"host": [
+						"small-gw-gateway-integration",
+						"apps",
+						"6736c9092d681465a42b82bd",
+						"ocp",
+						"techzone",
+						"ibm",
+						"com"
+					],
+					"path": [
+						"provider-org",
+						"sandbox",
+						"mockapi100",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mock burst1min",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IBM-Client-Id",
+						"value": "9723f463432bdac8489ccf0d370adb46",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://small-gw-gateway-integration.apps.6736c9092d681465a42b82bd.ocp.techzone.ibm.com/provider-org/sandbox/mockapi100/",
+					"protocol": "https",
+					"host": [
+						"small-gw-gateway-integration",
+						"apps",
+						"6736c9092d681465a42b82bd",
+						"ocp",
+						"techzone",
+						"ibm",
+						"com"
+					],
+					"path": [
+						"provider-org",
+						"sandbox",
+						"mockapi100",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

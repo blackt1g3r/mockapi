@@ -1,0 +1,141 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: filterfields
+  x-ibm-name: filterfields
+basePath: /filterfields
+x-ibm-configuration:
+  properties:
+    target-url:
+      value: >-
+        https://mockapi100-default.apps.6736c9092d681465a42b82bd.ocp.techzone.ibm.com/api/data
+      description: URL of the proxy policy
+      encoded: false
+  cors:
+    enabled: true
+  gateway: datapower-api-gateway
+  type: rest
+  phase: realized
+  enforced: true
+  testable: true
+  assembly:
+    execute:
+      - invoke:
+          title: invoke
+          version: 2.0.0
+          verb: keep
+          target-url: $(target-url)
+          follow-redirects: false
+          timeout: 60
+          parameter-control:
+            type: allowlist
+            values: []
+          header-control:
+            type: blocklist
+            values: []
+          inject-proxy-headers: true
+      - gatewayscript:
+          version: 2.0.0
+          title: gatewayscript
+          source: >
+            /**
+             * Filters fields from an object or array based on a list of allowed fields.
+             * @param {Object|Array} data - The response object or array to filter.
+             * @param {Array} fieldsToInclude - List of fields to include in the response.
+             * @return {Object|Array} - Filtered response.
+             */
+            function filterFields(data, fieldsToInclude) {
+                if (Array.isArray(data)) {
+                    return data.map(item => filterFields(item, fieldsToInclude));
+                }
+                if (typeof data === 'object' && data !== null) {
+                    let filtered = {};
+                    fieldsToInclude.forEach(field => {
+                        if (data.hasOwnProperty(field)) {
+                            filtered[field] = data[field];
+                        }
+                    });
+                    return filtered;
+                }
+                return data; // Return unchanged if not an object or array
+            }
+
+
+            // Example usage: Filter fields from the response body
+
+            const fieldsToInclude = ["field1", "field2", "field3","field4",
+            "field5", "field6", "field7", "field8","field9", "field10"]; //
+            Define fields dynamically as needed
+
+            const responseBody = apim.getvariable('message.body');
+
+            const filteredResponse = filterFields(responseBody,
+            fieldsToInclude);
+
+            apim.setvariable('message.body', filteredResponse);
+          description: ''
+    finally: []
+    catch: []
+  activity-log:
+    enabled: true
+    success-content: activity
+    error-content: payload
+paths:
+  /:
+    get:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+    put:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+    post:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+    delete:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+    head:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+    patch:
+      responses:
+        '200':
+          description: success
+          schema:
+            type: string
+      consumes: []
+      produces: []
+securityDefinitions:
+  clientID:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientID: []
+schemes:
+  - https
